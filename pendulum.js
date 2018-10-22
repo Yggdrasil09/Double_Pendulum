@@ -9,6 +9,8 @@ var g=2;
 var m1=20;
 var m2=20;
 
+var path=[];
+
 function setup()
 {
     var canvas=createCanvas(800, 600);
@@ -21,6 +23,7 @@ function setup()
     ang2=float(angle2);
     l1=int(length1);
     l2=int(length2);
+    path=[];
 }
 
 function draw()
@@ -30,6 +33,7 @@ function draw()
     y2=y1+l1*cos(ang1);
     x3=x2+l2*sin(ang2);
     y3=y2+l2*cos(ang2);
+    path.push(createVector(x3,y3));
     acc1=(-g*(2*m1+m2)*sin(ang1)-m2*g*sin(ang1-2*ang2)-2*sin(ang1-ang2)*m2*(vel2*vel2*l2+vel1*vel1*l1*cos(ang1-ang2)))/(l1*(2*m1+m2-m2*cos(2*ang1-2*ang2)));
     acc2=(2*sin(ang1-ang2)*(vel1*vel1*l1*(m1+m2)+g*(m1+m2)*cos(ang1)+vel2*vel2*l2*m2*cos(ang1-ang2)))/(l2*(2*m1+m2-m2*cos(2*ang1-2*ang2)));
     strokeWeight(3);
@@ -42,4 +46,8 @@ function draw()
     vel2+=acc2;
     ang1+=vel1;
     ang2+=vel2;
+    for(var i=0;i<path.length;i++)
+    {
+        point(path[i].x,path[i].y);
+    }
 }
