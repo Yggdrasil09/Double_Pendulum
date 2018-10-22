@@ -7,8 +7,126 @@
     <title>Double Pendulum</title>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+    <style>
+        .slidecontainer {
+            width: 100%; /* Width of the outside container */
+        }
+            
+            /* The slider itself */
+        .slider {
+            -webkit-appearance: none;  /* Override default CSS styles */
+            appearance: none;
+            width: 20%; /* Full-width */
+            height: 25px; /* Specified height */
+            background: #d3d3d3; /* Grey background */
+            outline: none; /* Remove outline */
+            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+            
+            /* Mouse-over effects */
+        .slider:hover {
+            opacity: 1; /* Fully shown on mouse-over */
+        }
+            
+            /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Override default look */
+            appearance: none;
+            width: 25px; /* Set a specific slider handle width */
+            height: 25px; /* Slider handle height */
+            background: #4CAF50; /* Green background */
+            cursor: pointer; /* Cursor on hover */
+        }
+            
+        .slider::-moz-range-thumb {
+            width: 25px; /* Set a specific slider handle width */
+            height: 25px; /* Slider handle height */
+            background: #4CAF50; /* Green background */
+            cursor: pointer; /* Cursor on hover */
+        }
+    </style>
 </head>
 <body>
+    <div class="slidecontainer">
+        <div>
+            <h1 style="font-family:courier;display:inline-block">Gravity(0-100)</h1>
+            <h1 style="font-family:courier;text-align:right;display:inline-block;padding-left:870px;padding-right:0px;border-right:0px;margin-right:0px">L1(0-300)</h1>
+            <input type="range" min="0" max="10" value="2" class="slider" id="myRange">
+            <input type="range" min="0" max="300" value="180" class="slider" id="Length1" style="margin-left:790px">
+            <br>
+        </div>
+        <div>
+            <h1 style="font-family:courier;display:inline-block">Mass 1 (0-100)</h1>
+            <h1 style="font-family:courier;text-align:right;display:inline-block;padding-left:870px;padding-right:0px;border-right:0px;margin-right:0px">L2(0-300)</h1>
+            <input type="range" min="0" max="100" value="20" class="slider" id="Mass1">
+            <input type="range" min="0" max="300" value="180" class="slider" id="Length2" style="margin-left:790px">
+            <br>
+        </div>
+        <h1 style="font-family:courier">Mass 1 (0-100)</h1>
+        <input type="range" min="0" max="100" value="20" class="slider" id="Mass1">
+        <br>
+        <h1 style="font-family:courier">Mass 2 (0-100)</h1>
+        <input type="range" min="0" max="100" value="20" class="slider" id="Mass2">
+        <br>
+        <h1 style="font-family:courier">Angle1(0-PI/2)</h1>
+        <input type="range" min="0" max="157" value="22" class="slider" id="Angle1">
+        <br>
+        <h1 style="font-family:courier">Angle2(0-PI/2)</h1>
+        <input type="range" min="0" max="157" value="52" class="slider" id="Angle2">
+    </div>
+    <script>
+        var slider = document.getElementById("myRange");
+        var gravity=slider.value; 
+        var slider1=document.getElementById("Mass1");
+        var mass1=slider1.value;
+        var slider2=document.getElementById("Mass2");
+        var mass2=slider2.value;
+        var slider3=document.getElementById("Angle1");
+        var angle1=slider3.value/100;
+        var slider4=document.getElementById("Angle2");
+        var angle2=slider4.value/100;
+        var slider5=document.getElementById("Length1");
+        var length1=slider5.value;
+        var slider6=document.getElementById("Length2");
+        var length2=slider6.value;
+        slider.oninput = function()
+        {
+            gravity= this.value;
+            setup();
+        }
+        slider1.oninput = function()
+        {
+            mass1= this.value;
+            setup();
+        }
+        slider2.oninput = function()
+        {
+            mass2= this.value;
+            setup();
+        }
+        slider3.oninput = function()
+        {
+            angle1= this.value/100;
+            setup();
+        }
+        slider4.oninput = function()
+        {
+            angle2= this.value/100;
+            setup();
+        }
+        slider5.oninput = function()
+        {
+            length1= this.value;
+            setup();
+        }
+        slider6.oninput = function()
+        {
+            length2= this.value;
+            setup();
+        }
+    </script>
     <script type="text/javascript"src="/pendulum.js"></script>
 </body>
 </html>

@@ -6,13 +6,21 @@ var ang1=Math.PI/2,ang2=Math.PI/3;
 var vel1=0,vel2=0;
 var acc1=0,acc2=0;
 var g=2;
-var m1=20,m2=20;
+var m1=20;
+var m2=20;
 
 function setup()
 {
     var canvas=createCanvas(800, 600);
     background(255);
     canvas.position((windowWidth-width)/2,(windowHeight-height)/2);
+    g=int(gravity);
+    m1=int(mass1);
+    m2=int(mass2);
+    ang1=float(angle1);
+    ang2=float(angle2);
+    l1=int(length1);
+    l2=int(length2);
 }
 
 function draw()
