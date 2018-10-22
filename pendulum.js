@@ -46,6 +46,7 @@ function draw()
     vel2+=acc2;
     ang1+=vel1;
     ang2+=vel2;
+    strokeWeight(5);
     for(var i=0;i<path.length;i++)
     {
         point(path[i].x,path[i].y);
